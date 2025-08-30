@@ -1,5 +1,5 @@
 # Disclaimer: This code was made for personal use and the owner of this code i.e. intotheabyss19 will not be responsible for any harm caused by usage of this code
-#
+
 import hashlib, hmac
 from getpass import getpass
 
@@ -12,7 +12,7 @@ CHARSETS = {
     "a-z": "abcdefghijklmnopqrstuvwxyz",
     "A-Z": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     "0-9": "0123456789",
-    "special": "@#%^&*!?-=+<>~$"
+    "special": "@#%&*!?-=+<>$"
 }
 
 BIAS_PROFILES = {
@@ -48,7 +48,7 @@ def hash_data(method, root, context):
         case "multiply_mod_256_7":
             return multiply_mod_ascii_algorithm(root, context, 7)
 
-        case "pbkdf2":
+        case "bcrypt (pbkdf2)":
             return hashlib.pbkdf2_hmac("sha256", root_b, context.encode(), 100_000)
         case "hmac_sha256":
             return hmac.new(root_b, context.encode(), hashlib.sha256).digest()
